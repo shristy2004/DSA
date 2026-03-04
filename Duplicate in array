@@ -1,0 +1,18 @@
+import java.util.HashSet;
+
+public class FindDuplicates {
+    public static void main(String[] args) {
+
+        int[] arr = {1, 2, 3, 4, 2, 5, 6, 3};
+
+        HashSet<Integer> set = new HashSet<>();
+
+        System.out.println("Duplicate elements are:");
+
+        for(int num : arr) {
+            if(!set.add(num)) {
+                System.out.println(num);
+            }
+        }
+    }
+}
