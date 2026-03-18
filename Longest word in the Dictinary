@@ -1,0 +1,19 @@
+import java.util.*;
+
+public class LongestWord {
+    public static void main(String args []) {
+
+        List<String> dictionary = Arrays.asList(
+            "apple", "banana", "grape", "watermelon", "kiwi"
+        );
+
+        String longest = "";
+
+        for (String word : dictionary) {
+            if (word.length() > longest.length()) {
+                longest = word;
+            }
+        }
+System.out.println("Longest word: " + longest);
+    }
+}
