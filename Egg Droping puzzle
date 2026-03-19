@@ -1,0 +1,45 @@
+public class EggDropping {
+
+    public static int eggDrop(int eggs, int floors) {
+
+        int[][] dp = new int[eggs + 1][floors + 1];
+
+        // Base cases
+        for (int i = 1; i <= eggs; i++) {
+            dp[i][0] = 0; // 0 floor
+            dp[i][1] = 1; // 1 floor
+        }
+
+        for (int j = 1; j <= floors; j++) {
+            dp[1][j] = j; // only 1 egg
+        }
+
+        // Fill DP table
+        for (int i = 2; i <= eggs; i++) {
+            for (int j = 2; j <= floors; j++) {
+
+                dp[i][j] = Integer.MAX_VALUE;
+
+                for (int x = 1; x <= j; x++) {
+
+                    int worst = 1 + Math.max(
+                        dp[i - 1][x - 1], // egg breaks
+                        dp[i][j - x]      // egg survives
+                    );
+
+                    dp[i][j] = Math.min(dp[i][j], worst);
+                }
+            }
+        }
+
+        return dp[eggs][floors];
+    }
+
+    public static void main(String[] args) {
+
+        int eggs = 2;
+        int floors = 10;
+
+        System.out.println("Minimum attempts: " + eggDrop(eggs, floors));
+    }
+}
