@@ -1,0 +1,46 @@
+class MinHeap {
+
+    int[] heap;
+    int size;
+    int capacity;
+
+    MinHeap(int capacity) {
+        this.capacity = capacity;
+        heap = new int[capacity];
+        size = 0;
+    }
+
+    int parent(int i) {
+        return (i - 1) / 2;
+    }
+
+    int leftChild(int i) {
+        return 2 * i + 1;
+    }
+
+    int rightChild(int i) {
+        return 2 * i + 2;
+    }
+
+    // Insert
+    void insert(int value) {
+
+        if (size == capacity) {
+            return;
+        }
+
+        heap[size] = value;
+        int current = size;
+        size++;
+
+        while (current != 0 &&
+               heap[parent(current)] > heap[current]) {
+
+            int temp = heap[current];
+            heap[current] = heap[parent(current)];
+            heap[parent(current)] = temp;
+
+            current = parent(current);
+        }
+    }
+}
