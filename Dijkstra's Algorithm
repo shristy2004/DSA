@@ -1,34 +1,26 @@
 import java.util.*;
-
 class DijkstraGraph {
 
-    static class Pair {
+static class Pair {
         int node;
         int weight;
-
-        Pair(int node, int weight) {
+Pair(int node, int weight) {
             this.node = node;
             this.weight = weight;
         }
     }
-
-    static void dijkstra(int V,
-                         ArrayList<ArrayList<Pair>> adj,
-                         int source) {
-
-        PriorityQueue<Pair> pq =
-            new PriorityQueue<>(
-                (a, b) -> a.weight - b.weight
-            );
+ static void dijkstra(int V,
+         ArrayList<ArrayList<Pair>> adj,int source) {
+    PriorityQueue<Pair> pq =
+    new PriorityQueue<>(
+         (a, b) -> a.weight - b.weight);
 
         int[] dist = new int[V];
 
         // Initialize distances
         Arrays.fill(dist, Integer.MAX_VALUE);
-
-        dist[source] = 0;
+         dist[source] = 0;
         pq.add(new Pair(source, 0));
-
         while (!pq.isEmpty()) {
 
             Pair current = pq.poll();
