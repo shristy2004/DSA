@@ -3,27 +3,20 @@ import java.util.*;
 class Solution {
 
     public static int majorityElement(int[] nums) {
+int freq=0;
+int ans=0;
 
-        HashMap<Integer, Integer> map = new HashMap<>();
-
-        int n = nums.length;
-
-        for (int num : nums) {
-
-            map.put(num, map.getOrDefault(num, 0) + 1);
-
-            if (map.get(num) > n / 2) {
-                return num;
-            }
-        }
-
-        return -1; 
-    }
-
-    public static void main(String[] args) {
-
-        int[] nums = {2, 2, 1, 1, 1, 2, 2};
-
-        System.out.println(majorityElement(nums));
+for(int i=0;i<nums.length;i++){
+if(freq==0){
+    ans=nums[i];
+}
+if(ans==nums[i]){
+    freq++;
+}
+else{
+    freq--;
+}
+     }
+     return ans;
     }
 }
